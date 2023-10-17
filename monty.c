@@ -42,7 +42,7 @@ int main(int argc, char *argv[])
 			}
 
 			value = atoi(arg);
-			if (!value)
+			if (value == 0 && *arg != '0')
 			{
 				fprintf(stderr, "L%d: usage: push integer\n", line_number);
 				exit(EXIT_FAILURE);
