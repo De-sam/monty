@@ -46,6 +46,13 @@ int main(int argc, char *argv[])
 			if (!arg)
 			{
 				fprintf(stderr, "L%d: usage: push integer\n", line_number);
+				while (stack)
+				{
+					temp = stack;
+					stack = stack->next;
+					free(temp);
+				}
+				fclose(file);
 				exit(EXIT_FAILURE);
 			}
 
@@ -53,6 +60,13 @@ int main(int argc, char *argv[])
 			if (value == 0 && *arg != '0')
 			{
 				fprintf(stderr, "L%d: usage: push integer\n", line_number);
+				while (stack)
+				{
+					temp = stack;
+					stack = stack->next;
+					free(temp);
+				}
+				fclose(file);
 				exit(EXIT_FAILURE);
 			}
 
@@ -65,6 +79,7 @@ int main(int argc, char *argv[])
 		else
 		{
 			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
+			fclose(file);
 			exit(EXIT_FAILURE);
 		}
 	}
