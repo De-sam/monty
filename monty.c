@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
 
 	if (argc != 2)
 	{
-		fprintf(stdout, "USAGE: monty file\n");
+		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 
@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
 	file = fopen(file_name, "r");
 	if (!file)
 	{
-		fprintf(stdout, "Error: Can't open file %s\n", file_name);
+		fprintf(stderr, "Error: Can't open file %s\n", file_name);
 		exit(EXIT_FAILURE);
 	}
 
@@ -73,7 +73,7 @@ void push(stack_t **stack, int value)
 	stack_t *new_node = malloc(sizeof(stack_t));
 	if (!new_node)
 	{
-		fprintf(stdout, "Error: malloc failed\n");
+		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
 
