@@ -142,7 +142,7 @@ void pall(stack_t *stack)
 {
 	while (stack)
 	{
-		printf("%d\n", stack->n);
+		fprintf(stdout, "%d\n", stack->n);
 		stack = stack->next;
 	}
 }
