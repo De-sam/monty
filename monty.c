@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
 
 	if (argc != 2)
 	{
-		fprintf(stderr, "USAGE: monty file\n");
+		fprintf(stdout, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 
@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
 	file = fopen(file_name, "r");
 	if (!file)
 	{
-		fprintf(stderr, "Error: Can't open file %s\n", file_name);
+		fprintf(stdout, "Error: Can't open file %s\n", file_name);
 		exit(EXIT_FAILURE);
 	}
 
