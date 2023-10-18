@@ -1,10 +1,18 @@
 #include "monty.h"
 
+/**
+ * main - Monty ByteCode Interpreter
+ *
+ * @argc: Number of command line arguments.
+ * @argv: Array of command line arguments.
+ *
+ * Return: 0 upon successful execution of the program.
+ */
 int main(int argc, char *argv[])
 {
 	char *file_name = NULL, *opcode, *arg;
 	FILE *file;
-	stack_t *stack = NULL;
+	stack_t *stack = NULL, *temp;
 	char line[1024];
 	int line_number = 0, value;
 
@@ -65,17 +73,27 @@ int main(int argc, char *argv[])
 
 	while (stack)
 	{
-		stack_t *temp = stack;
+		temp = stack;
 		stack = stack->next;
 		free(temp);
 	}
 
-	return 0;
+	return (0);
 }
 
+/**
+ * push - Pushes an integer onto the stack.
+ *
+ * @stack: A double pointer to the top of the stack.
+ * @value: The integer value to push onto the stack.
+ *
+ * Return: void
+ */
 void push(stack_t **stack, int value)
 {
-	stack_t *new_node = malloc(sizeof(stack_t));
+	stack_t *new_node;
+
+	new_node = malloc(sizeof(stack_t));
 	if (!new_node)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
@@ -98,6 +116,13 @@ void push(stack_t **stack, int value)
 	*stack = new_node;
 }
 
+/**
+ * pall - Prints all values on the stack.
+ *
+ * @stack: A pointer to the top of the stack.
+ *
+ * Return: void
+ */
 void pall(stack_t *stack)
 {
 	while (stack)
