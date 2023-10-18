@@ -63,7 +63,12 @@ int main(int argc, char *argv[])
 
 	fclose(file);
 
-	free(stack);
+	while (stack)
+	{
+		stack_t *temp = stack;
+		stack = stack->next;
+		free(temp);
+	}
 
 	return 0;
 }
