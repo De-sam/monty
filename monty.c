@@ -79,6 +79,12 @@ int main(int argc, char *argv[])
 		else
 		{
 			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
+			while (stack)
+			{
+				temp = stack;
+				stack = stack->next;
+				free(temp);
+			}
 			fclose(file);
 			exit(EXIT_FAILURE);
 		}
